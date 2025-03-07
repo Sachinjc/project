@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker - Stylish & Responsive</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f5f7f5;
+            color: #333;
+        }
+
+        /* Navigation Bar */
+        nav.header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #2c3e50;
+            color: #239a94;
+        }
+
+        nav .logo h1 {
+            font-size: 40px;
+            font-weight: bold;
+            color: #ffffff;
+        }
+
+        nav .header-item a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 18px;
+        }
+
+        nav .header-item a:hover {
+            text-decoration:underline;
+        }
+
+        .btn a button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            margin: 0 10px;
+            background-color: #1abc9c;
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn a button:hover {
+            background-color: #16a085;
+        }
+
+        /* Main Section */
+        section.home {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 60px 20px;
+            background-color: #fff;
+        }
+
+        .main-sec .txt p {
+            font-size: 28px;
+            color: #27ae60;
+            margin-bottom: 15px;
+        }
+
+        .main-sec .txt h4 {
+            font-size: 24px;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .main-sec .right img {
+            width: 100%;
+            max-width: 500px;
+        }
+
+        /* Expense Overview Section */
+        section.expense-overview {
+            background-color: #f1f1f1;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .expense-overview h1 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .expense-overview p {
+            font-size: 18px;
+            margin-bottom: 40px;
+            color: #777;
+        }
+
+        .expense-overview .main-box {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .expense-overview .box {
+            width: 22%;
+            min-width: 220px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .expense-overview .box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        .expense-overview .box i {
+            font-size: 40px;
+            margin-bottom: 10px;
+            color: #27ae60;
+        }
+
+        .expense-overview .box p {
+            margin: 10px 0;
+            color: #333;
+        }
+
+        /* Expense Input Section */
+        section.expense-input {
+            padding: 60px 20px;
+            background-color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .expense-input h2 {
+            font-size: 26px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .expense-input form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .expense-input input, .expense-input select {
+            padding: 12px;
+            margin: 10px 0;
+            width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            transition: border-color 0.3s ease;
+        }
+
+        .expense-input input:focus, .expense-input select:focus {
+            border-color: #1abc9c;
+        }
+
+        .expense-input input[type="submit"] {
+            background-color: #27ae60;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .expense-input input[type="submit"]:hover {
+            background-color: #2ecc71;
+        }
+
+        /* Table Section */
+        section.expense-table {
+            padding: 60px 20px;
+            background-color: #f1f1f1;
+        }
+
+        .expense-table h2 {
+            text-align: center;
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 40px;
+        }
+
+        .expense-table table {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+            border-collapse: collapse;
+        }
+
+        .expense-table th, .expense-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .expense-table th {
+            background-color: #27ae60;
+            color: white;
+        }
+
+        /* Footer Section */
+        footer.foot-sec {
+            background-color: #2c3e50;
+            color: white;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        footer h1 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        footer .social i {
+            font-size: 25px;
+            margin-right: 10px;
+        }
+
+        footer .social i:hover {
+            color: #1abc9c;
+        }
+
+        footer .box2 a {
+            display: block;
+            color: #ecf0f1;
+            margin-bottom: 10px;
+            text-decoration: none;
+        }
+
+        footer .box2 a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Media Queries */
+        @media (max-width: 768px) {
+            nav.header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .expense-overview .main-box {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .expense-overview .box {
+                width: 80%;
+                margin: 15px 0;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .expense-input form {
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="header">
+        <div class="logo">
+            <h1>Spend Smart </h1>
+        </div>
+        <div class="header-item">
+            <a href="#">Home</a>
+            <a href="#">Dashboard</a>
+            <a href="#">Contact Us</a>
+        </div>
+        <div class="btn">
+            <a href="login.html"><button>Login</button></a>
+            <a href="register.html"><button>Register</button></a>
+        </div> 
+    </nav>
+
+    <!-- Main Section -->
+    <section class="home">
+        <div class="main-sec">
+            <div class="txt">
+                <p>Track Your Expenses Seamlessly</p>
+                <h4>Manage your finances efficiently with real-time insights and budgeting tools.</h4>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expense Overview Section -->
+    <section class="expense-overview">
+        <div class="txt">
+            <h1>Expense Overview</h1>
+            <p>Analyze your spending across different categories and track your financial health.</p>
+        </div>
+
+        <div class="main-box">
+            <div class="box">
+                <i class="fa-solid fa-wallet"></i>
+                <p class="head">Total Income</p>
+                <p>$3,500</p>
+            </div>
+
+            <div class="box">
+                <i class="fa-solid fa-money-bill-wave"></i>
+                <p class="head">Total Expenses</p>
+                <p>$1,500</p>
+            </div>
+
+            <div class="box">
+                <i class="fa-solid fa-piggy-bank"></i>
+                <p class="head">Savings</p>
+                <p>$2,000</p>
+            </div>
+
+            <div class="box">
+                <i class="fa-solid fa-chart-line"></i>
+                <p class="head">Monthly Budget</p>
+                <p>$2,000</p>
+            </div>
+        </div>
+    </section>
+
+    
+<!-- Footer Section -->
+<footer class="foot-sec">
+    <div class="main-box">
+        <div class="box1">
+            <h1>Expense Tracker</h1>
+            <p>Your reliable partner for managing finances.</p>
+            <div class="social">
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                <a href="#"><i class="fa-brands fa-twitter"></i></a>
+            </div>
+        </div>
+
+        <div class="box2">
+            <h1>Quick Links</h1>
+            <a href="#">Home</a>
+            <a href="#">Dashboard</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Contact Us</a>
+        </div>
+
+        <div class="box3">
+            <h1>Subscribe to Our Newsletter</h1>
+            <p>Stay updated with our latest features and tips!</p>
+            <form action="#" method="POST">
+                <input type="email" placeholder="Enter your email" required>
+                <input type="submit" value="Subscribe">
+            </form>
+        </div>
+
+        <div class="box4">
+            <h1>Contact Us</h1>
+            <p>123 Budget Lane, Money City</p>
+            <p>Email: support@expensetracker.com</p>
+            <p>Phone: +123-456-7890</p>
+        </div>
+    </div>
+</footer>
+
+<style>
+    /* Footer Section Enhancements */
+    footer.foot-sec {
+        background-color: #2c3e50;
+        color: white;
+        padding: 40px 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    footer .main-box {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        width: 100%;
+        max-width: 1200px; /* Ensure maximum width for better alignment */
+    }
+
+    footer h1 {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    footer .social {
+        display: flex;
+        margin-top: 10px;
+    }
+
+    footer .social a {
+        color: white;
+        margin-right: 15px;
+        font-size: 25px;
+        transition: color 0.3s ease;
+    }
+
+    footer .social a:hover {
+        color: #1abc9c;
+    }
+
+    footer .box2 a {
+        display: block;
+        color: #ecf0f1;
+        margin-bottom: 10px;
+        text-decoration: none;
+        transition: text-decoration 0.3s;
+    }
+
+    footer .box2 a:hover {
+        text-decoration: underline;
+    }
+
+    footer .box3 {
+        text-align: center;
+        margin: 20px 0;
+    }
+
+    footer .box3 input[type="email"], footer .box3 input[type="submit"] {
+        padding: 10px;
+        margin: 5px 0;
+        border: none;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+    }
+
+    footer .box3 input[type="email"] {
+        width: 220px; /* Adjust width for input */
+    }
+
+    footer .box3 input[type="submit"] {
+        background-color: #1abc9c;
+        color: white;
+        cursor: pointer;
+    }
+
+    footer .box3 input[type="submit"]:hover {
+        background-color: #16a085;
+    }
+
+    /* Responsive Media Queries */
+    @media (max-width: 768px) {
+        footer .main-box {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        footer .box1, footer .box2, footer .box3, footer .box4 {
+            width: 80%;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+    }
+</style>
+
+   
+
+    </body>
+</html>
